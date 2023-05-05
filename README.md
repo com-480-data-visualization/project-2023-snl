@@ -86,6 +86,52 @@ doi:10.1017/9781009325844.
 **10% of the final grade**
 ### Sketches of the vizualiation
 
+### List the tools
+
+Database management system: File format CSV, loaded using a CSV loader, and parsed using ....
+
+Front-end technologies: We will use HTML, CSS, and JavaScript to create the user interface and design of your website.
+
+Data visualization library: You will need a data visualization library to create the charts and graphs that will display the carbon emissions data. We will use D3.js, Chart.js, and Plotly.js.
+
+Programming language: We will use a programming language to build our web application. We will use Scala JS.
+
+Web hosting: We will be hosting the website on GitHub.
+
+
+### Pieces to implement
+#### Dataset preparation:
+* Clean and transform the data as necessary.
+* Load the data into the  database management system.
+#### User interface design:
+* Design the user interface of our website.
+* Use HTML, CSS, and JavaScript to create a responsive design.
+* Include input fields and buttons to allow users to select the carbon emission of either food or transport. Then for food they select all the food items they consume alongside its consumption; and for transport, they select means of transport and distance travelled. 
+#### User input handling:
+* Write code to handle user input from the website.
+* Retrieve data from the database based on the user input.
+* Calculate carbon emissions based on the user input.
+#### Data visualization:
+* Write code to handle user input from the website.
+* Retrieve data from the database based on the user input.
+* Calculate carbon emissions based on the user input.
+#### Data visualization:
+* With the data visualization library create charts and graphs.
+* Write code to create visualizations of carbon emissions data.
+* Display the visualizations using bar chart for food and travel on the website.
+* Display the world map, and then display the carbon emission of the country on which mouse is hovered. A pop up box will display carbon emissions over the year and predicted carbon emissions for the future years.
+#### Testing and deployment:
+* Test the website and its functionality.
+* Deploy the website to a web hosting service GitHub.
+* Test the website again after deployment.
+
+### List extra ideas
+
+* Compare individual consumption to average consumption of countries.
+* 
+
+### Basic skeleton of the visualization/widgets
+
 ## Milestone 3 (4th June, 5pm)
 
 **80% of the final grade**
