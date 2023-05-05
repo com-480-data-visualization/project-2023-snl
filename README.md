@@ -84,7 +84,7 @@ doi:10.1017/9781009325844.
 ## Milestone 2 (7th May, 5pm)
 
 **10% of the final grade**
-
+### Sketches of the vizualiation
 
 ## Milestone 3 (4th June, 5pm)
 
