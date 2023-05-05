@@ -4,9 +4,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.0.0/d3.js"></script>
     </head>
     <body>
-        <button class="tablink" id="default" onclick="handleTab('Data')">Data Overview</button>
+        <button class="tablink" onclick="handleTab('Data')">Data Overview</button>
         <button class="tablink" onclick="handleTab('Country')">Country Averages</button>
-        <button class="tablink" onclick="handleTab('Calculator')">Calculator</button>
+        <button class="tablink" id="default" onclick="handleTab('Calculator')">Calculator</button>
 
         <div id="Data" class="tabcontent">
             <script type="text/javascript" src="chart.js"></script>
@@ -17,7 +17,132 @@
         </div>
 
         <div id="Calculator" class="tabcontent">
-            <script type="text/javascript" src="calculator.js"></script>
+            <form>
+	              <h1>Carbon Footprint</h1>
+                <div class="field">
+                    <label>Country</label>
+		                <select id="Type">
+                        <option value="Diesel">Switzerland</option>
+                        <option value="Petrol">France</option>
+                        <option value="Petrol">India</option>
+                        <option value="Petrol">Germany</option>
+                        <option value="Petrol">Italy</option>
+                        <option value="Petrol">etc...</option>
+                    </select>
+	              </div>
+                <h2>Transport</h2>
+	              <div class="field">
+		                <label>Car Details:</label>
+                    <select id="Type">
+                        <option value="Diesel">Car</option>
+                        <option value="Petrol">Motorcycle</option>
+                    </select>
+                    <select id="Fuel">
+                        <option value="Diesel">Petrol</option>
+                        <option value="Petrol">Diesel</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Electric">Electric</option>
+                    </select>
+                    <select id="Size">
+                        <option value="Large">Large (SUV, truck,...)</option>
+                        <option value="Medium">Medium (???)</option>
+                        <option value="Small">Small (Mini,..)</option>
+                    </select>
+                    <input type="number" id="kms"/>
+                    <label>kms / year</label>
+	              </div>
+                <div class="field">
+		                <label>flights</label>
+                    <input type="number" id="kms"/>
+                    <label>kms / year</label>
+	              </div>
+                <div class="field">
+		                <label>Bus</label>
+                    <input type="number" id="kms"/>
+                    <label>kms / year</label>
+	              </div>
+                <div class="field">
+		                <label>Train</label>
+                    <input type="number" id="kms"/>
+                    <label>kms / year</label>
+	              </div>
+                <div class="field">
+		                <label>Cycle</label>
+                    <input type="number" id="kms"/>
+                    <label>kms / year</label>
+	              </div>
+                <div class="field">
+		                <label>Walk</label>
+                    <input type="number" id="kms"/>
+                    <label>kms / year</label>
+	              </div>
+                <h2>Food</h2>
+                <div class="field">
+		                <label>Beef (Beef herd)</label>
+                    <input type="number" id="kms"/>
+                    <label>g / week</label>
+	              </div>
+                <div class="field">
+		                <label>Beef (Beef herd)</label>
+                    <input type="number" id="kms"/>
+                    <label>g / week</label>
+	              </div>
+                <div class="field">
+		                <label>Dark Chocolate</label>
+                    <input type="number" id="kms"/>
+                    <label>g / week</label>
+	              </div>
+                <div class="field">
+		                <label>Lamb & Mutton</label>
+                    <input type="number" id="kms"/>
+                    <label>g / week</label>
+	              </div>
+                <div class="field">
+		                <label>Coffee</label>
+                    <input type="number" id="kms"/>
+                    <label>g / week</label>
+	              </div>
+                <div class="field">
+		                <label>Prawns</label>
+                    <input type="number" id="kms"/>
+                    <label>g / week</label>
+	              </div>
+                <div class="field">
+		                <label>Cheese</label>
+                    <input type="number" id="kms"/>
+                    <label>g / week</label>
+	              </div>
+                <div class="field">
+		                <label>Fish</label>
+                    <input type="number" id="kms"/>
+                    <label>g / week</label>
+	              </div>
+                <div class="field">
+		                <label>Pig meat</label>
+                    <input type="number" id="kms"/>
+                    <label>g / week</label>
+	              </div>
+                <div class="field">
+		                <label>Poultry</label>
+                    <input type="number" id="kms"/>
+                    <label>g / week</label>
+	              </div>
+            </form>
+            <h2>Activity CSV</h2>
+            <div class="field">
+		            <label>Consumption csv</label>
+                <input type="file" id="kms"/>
+	          </div>
+
+            <div class="field">
+                <br>
+                <button type="button">Plot</button>
+            </div>
+
+            <h2>Plots</h2>
+            <div id="Calc" class="tabcontent">
+                <script type="text/javascript" src="calculator.js"></script>
+            </div>
         </div>
 
         <script type="text/javascript" src="tabs.js"></script>

@@ -1,3 +1,4 @@
-const calculatorDiv = document.getElementById("Calculator").innerHTML = "Hello World";
+const calculatorDiv = document.getElementById("Calc").innerHTML = "Hello World";
+
 
 

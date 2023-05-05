@@ -55,7 +55,7 @@ distribution and visualisation of where the carbon footprint of one lies.
 > Pre-processing of the data set you chose
 > - Show some basic statistics and get insights about the data
 
-Initial analysis of the data gives us insights into the food products that cause the maximum amount of greenhouse gas emissions. Unsurprisingly, beef burger tops the list followed by a cheese dish (macaroni cheese), a meat pizza, and eggs. On the contrary, potatoes, almonds, and almond milk caused minimum emissions. 
+Initial analysis of the data gives us insights into the food products that cause the maximum amount of greenhouse gas emissions. Unsurprisingly, beef burger tops the list followed by a cheese dish (macaroni cheese), a meat pizza, and eggs. On the contrary, potatoes, almonds, and almond milk caused minimum emissions.
 
 A kilogram of beef produces 99.48 kilogram of carbon dioxide equivalent, whereas lamb and mutton cause 39.72 kilogram of carbon dioxide emissions. It is interesting to note that per kilogram of chocolate also produce carbon dioxide a bit less than beef but more than lamb and mutton.
 
