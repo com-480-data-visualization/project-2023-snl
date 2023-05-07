@@ -85,7 +85,8 @@ doi:10.1017/9781009325844.
 
 **10% of the final grade**
 ### Sketches of the vizualiation
-
+![Sketch 1](./sketches/viz1.png)
+![Sketch 2](./sketches/viz2.png)
 ### List the tools
 
 Database management system: File format CSV, loaded using a CSV loader, and parsed using ....
