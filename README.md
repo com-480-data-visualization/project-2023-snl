@@ -85,17 +85,28 @@ doi:10.1017/9781009325844.
 
 **10% of the final grade**
 ### Sketches of the vizualiation
+#### Sketch-1
+This sketch depicts one part of the website, where a user can calculate carbon emission of the food they consuming or the transport they are using. 
+
+For the food category, the user enters all the food items, its quanity, and the period of consumption, and then the website computes and visualizes the carbon emissions. For the transport category, user enters the mode of transport, duration of travel, and distance of travel to visually learn about the carbon emission from the transport. We show the visualization for the food category in the below picture.
+
 ![Sketch 1](./sketches/viz1.png)
+
+#### Sketch 2
+This is the other part of the website, where the website visualizes the energy use per country per person over a period of time. Moreover, the website takes into account the climate change report and the policies implemented by a country to predict the energy use in the coming years. 
+
+A user can use two different modes of visualization, one is per country, in which user hovers the mouse to the country, which they are interested in, and then a pop up box displays energy use over the years. Other mode is where the energy consumption of all the countries is displayed together using a heat map. We show the first mode in the following sketch.
+
 ![Sketch 2](./sketches/viz2.png)
 ### List the tools
 
-Database management system: File format CSV, loaded using a CSV loader, and parsed using ....
+Database management system: File format CSV and loaded using a CSV loader. 
 
 Front-end technologies: We will use HTML, CSS, and JavaScript to create the user interface and design of your website.
 
-Data visualization library: You will need a data visualization library to create the charts and graphs that will display the carbon emissions data. We will use D3.js, Chart.js, and Plotly.js.
+Data visualization library: We will use a data visualization library to create the charts and graphs that will display the carbon emissions data. We will use D3.js, Chart.js, and Plotly.js.
 
-Programming language: We will use a programming language to build our web application. We will use Scala JS.
+Programming: We will use Scala JS.
 
 Web hosting: We will be hosting the website on GitHub.
 
@@ -113,7 +124,6 @@ Web hosting: We will be hosting the website on GitHub.
 * Retrieve data from the database based on the user input.
 * Calculate carbon emissions based on the user input.
 #### Data visualization:
-* Write code to handle user input from the website.
 * Retrieve data from the database based on the user input.
 * Calculate carbon emissions based on the user input.
 #### Data visualization:
@@ -129,9 +139,11 @@ Web hosting: We will be hosting the website on GitHub.
 ### List extra ideas
 
 * Compare individual consumption to average consumption of countries.
-* 
+* Give ideas to users to bring down carbon emissions.
+
 
 ### Basic skeleton of the visualization/widgets
+Please find a basic skeleton of out website in ./website/index.html
 
 ## Milestone 3 (4th June, 5pm)
 
