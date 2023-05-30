@@ -10,5 +10,4 @@ function handleTab(tab) {
     }
 
     document.getElementById(tab).style.display = "block";
-    // evt.currentTarget.className += " active";
 }

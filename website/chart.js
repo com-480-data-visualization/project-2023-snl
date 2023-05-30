@@ -1,5 +1,3 @@
-const chartDiv = document.getElementById("Data");
-
 var margin = {top: 20, right: 30, bottom: 40, left: 90},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;

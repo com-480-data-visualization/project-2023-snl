@@ -6,7 +6,8 @@
     <body>
         <button class="tablink" onclick="handleTab('Data')">Data Overview</button>
         <button class="tablink" onclick="handleTab('Country')">Country Averages</button>
-        <button class="tablink" id="default" onclick="handleTab('Calculator')">Calculator</button>
+        <button class="tablink" id="default" onclick="handleTab('Calculator')">Annual Calculator</button>
+        <button class="tablink" onclick="handleTab('Monthly')">Monthly</button>
 
         <div id="Data" class="tabcontent">
             <script type="text/javascript" src="chart.js"></script>
@@ -53,82 +54,82 @@
 	              </div>
                 <div class="field">
 		                <label>flights</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>kms / year</label>
 	              </div>
                 <div class="field">
 		                <label>Bus</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>kms / year</label>
 	              </div>
                 <div class="field">
 		                <label>Train</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>kms / year</label>
 	              </div>
                 <div class="field">
 		                <label>Cycle</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>kms / year</label>
 	              </div>
                 <div class="field">
 		                <label>Walk</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>kms / year</label>
 	              </div>
                 <h2>Food</h2>
                 <div class="field">
 		                <label>Beef (Beef herd)</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>g / week</label>
 	              </div>
                 <div class="field">
 		                <label>Beef (Beef herd)</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>g / week</label>
 	              </div>
                 <div class="field">
 		                <label>Dark Chocolate</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>g / week</label>
 	              </div>
                 <div class="field">
 		                <label>Lamb & Mutton</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>g / week</label>
 	              </div>
                 <div class="field">
 		                <label>Coffee</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>g / week</label>
 	              </div>
                 <div class="field">
 		                <label>Prawns</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>g / week</label>
 	              </div>
                 <div class="field">
 		                <label>Cheese</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>g / week</label>
 	              </div>
                 <div class="field">
 		                <label>Fish</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>g / week</label>
 	              </div>
                 <div class="field">
 		                <label>Pig meat</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>g / week</label>
 	              </div>
                 <div class="field">
 		                <label>Poultry</label>
-                    <input type="number" id="kms"/>
+                    <input type="number" id="kms" value="0"/>
                     <label>g / week</label>
 	              </div>
             </form>
-            <h2>Activity CSV</h2>
+            <h2>Activity JSon</h2>
             <div class="field">
 		            <label>Consumption csv</label>
                 <input type="file" id="kms"/>
@@ -140,9 +141,13 @@
             </div>
 
             <h2>Plots</h2>
-            <div id="Calc" class="tabcontent">
+            <div id="Calc">
                 <script type="text/javascript" src="calculator.js"></script>
             </div>
+        </div>
+
+        <div id="Monthly" class="tabcontent">
+            <script type="text/javascript" src="monthly.js"></script>
         </div>
 
         <script type="text/javascript" src="tabs.js"></script>
