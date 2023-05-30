@@ -1,4 +1,8 @@
 let classes = new Map ([
+    ["CarType", "Transport"],
+    ["CarFuel", "Transport"],
+    ["CarSize", "Transport"],
+    ["CarKm", "Transport"],
     ["Car", "Transport"],
     ["Flights", "Transport"],
     ["Bus", "Transport"],
@@ -7,11 +11,13 @@ let classes = new Map ([
     ["Walk", "Transport"]
 ]);
 
-function carEmission(data, transport) {
-    let carType = data["CarType"];
-    let fuel = data["CarFuel"];
-    let carSize = data["CarSize"];
-    let km = data["CarKm"];
+function getTransport(form, transport) {
+    let tForm = Object.fromEntries(Object.entries(form).filter(([k,v]) => classes.get(k) == "Transport"));
+
+    let carType = tForm["CarType"];
+    let fuel = tForm["CarFuel"];
+    let carSize = tForm["CarSize"];
+    let km = tForm["CarKm"];
 
     var qString = "";
     if(carType == "Car") {
@@ -20,98 +26,111 @@ function carEmission(data, transport) {
         qString = carSize + " " + carType;
     }
 
-    let carFootprint = km * transport[qString];
-    console.log(transport);
-    console.log(transport["Bus"]);
-    console.log(carFootprint);
+    console.log(tForm);
+
+    delete tForm["CarType"];
+    delete tForm["CarFuel"];
+    delete tForm["CarSize"];
+    delete tForm["CarKm"];
+
+    console.log(tForm);
+
+    tForm = Object.entries(tForm).map(([k,v]) => transport[k] * v);
+
+    console.log(tForm);
+
+    tForm["Car"] = km * transport[qString];
+
+    return tForm;
+}
+
+function cleanForBarChart(form, transport) {
+    let tr = getTransport(form, transport);
+
+    console.log(tr);
+    throw new Error();
 }
 
 function getData(form) {
-    var formData = new FormData(form);
-    var data = Object.fromEntries(formData);
+    var formD = new FormData(form);
+    var formData = Object.fromEntries(formD);
 
-    let foodCsv = readFood();
-    let energyCsv = readEnergy();
-    let transportCsv = readTransport();
+    let foodCsv = readData(function (foodCsv, energyCsv, transportCsv) {
+        // set the dimensions and margins of the graph
+        var margin = {top: 10, right: 30, bottom: 20, left: 50},
+            width = 460 - margin.left - margin.right,
+            height = 400 - margin.top - margin.bottom;
 
-    console.log(foodCsv);
-    console.log(energyCsv);
-    console.log(transportCsv);
+        // append the svg object to the body of the page
+        var svg = d3.select("#footprint")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                  "translate(" + margin.left + "," + margin.top + ")");
 
-    carEmission(data, transportCsv);
+        console.log(formData);
+        formData = cleanForBarChart(formData, foodCsv, energyCsv, transportCsv);
 
-    return;
+        // List of subgroups = header of the csv files = soil condition here
+        var classes = ["Food", "Transport", "Energy"];
 
-    // set the dimensions and margins of the graph
-    var margin = {top: 10, right: 30, bottom: 20, left: 50},
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+        // List of groups = species here = value of the first column called group -> I show them on the X axis
+        var groups = d3.map(d3.entries(data), function(d){
+            console.log(d.key);
+            return classes[d.key];
+        }).keys();
 
-    // append the svg object to the body of the page
-    var svg = d3.select("#footprint")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform",
-              "translate(" + margin.left + "," + margin.top + ")");
+        console.log(groups);
 
-    // List of subgroups = header of the csv files = soil condition here
-    var classes = ["Food", "Transport", "Energy"];
+        return;
 
-    // List of groups = species here = value of the first column called group -> I show them on the X axis
-    var groups = d3.map(d3.entries(data), function(d){
-        console.log(d);
-        return classes[d.key];
-    }).keys();
+        // Add X axis
+        var x = d3.scaleBand()
+            .domain(groups)
+            .range([0, width])
+            .padding([0.2]);
 
-    return;
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x).tickSizeOuter(0));
 
-    // Add X axis
-    var x = d3.scaleBand()
-        .domain(groups)
-        .range([0, width])
-        .padding([0.2]);
+        // Add Y axis
+        var y = d3.scaleLinear()
+            .domain([0, 60])
+            .range([ height, 0 ]);
+        svg.append("g")
+            .call(d3.axisLeft(y));
 
-    svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x).tickSizeOuter(0));
+        // color palette = one color per subgroup
+        var color = d3.scaleOrdinal()
+            .domain(subgroups)
+            .range(['#e41a1c','#377eb8','#4daf4a']);
 
-    // Add Y axis
-    var y = d3.scaleLinear()
-        .domain([0, 60])
-        .range([ height, 0 ]);
-    svg.append("g")
-        .call(d3.axisLeft(y));
+        //stack the data? --> stack per subgroup
+        var stackedData = d3.stack()
+            .keys(subgroups)(data);
 
-    // color palette = one color per subgroup
-    var color = d3.scaleOrdinal()
-        .domain(subgroups)
-        .range(['#e41a1c','#377eb8','#4daf4a']);
-
-    //stack the data? --> stack per subgroup
-    var stackedData = d3.stack()
-        .keys(subgroups)(data);
-
-  // Show the bars
-    svg.append("g")
-        .selectAll("g")
-    // Enter in the stack data = loop key per key = group per group
-        .data(stackedData)
-        .enter().append("g")
-        .attr("fill", function(d) { return color(d.key); })
-        .selectAll("rect")
-    // enter a second time = loop subgroup per subgroup to add all rectangles
-        .data(function(d) { return d; })
-        .enter().append("rect")
-        .attr("x", function(d) { return x(d.data.group); })
-        .attr("y", function(d) { return y(d[1]); })
-        .attr("height", function(d) { return y(d[0]) - y(d[1]); })
-        .attr("width",x.bandwidth());
+        // Show the bars
+        svg.append("g")
+            .selectAll("g")
+        // Enter in the stack data = loop key per key = group per group
+            .data(stackedData)
+            .enter().append("g")
+            .attr("fill", function(d) { return color(d.key); })
+            .selectAll("rect")
+        // enter a second time = loop subgroup per subgroup to add all rectangles
+            .data(function(d) { return d; })
+            .enter().append("rect")
+            .attr("x", function(d) { return x(d.data.group); })
+            .attr("y", function(d) { return y(d[1]); })
+            .attr("height", function(d) { return y(d[0]) - y(d[1]); })
+            .attr("width",x.bandwidth());
+    });
 }
 
 document.getElementById("form").addEventListener("submit", function (e) {
     e.preventDefault();
     getData(e.target);
 });
-

@@ -146,8 +146,7 @@ Web hosting: We will be hosting the website on GitHub.
 Please find a basic skeleton of out website in ./website/index.html
 
 ## Milestone 3 (4th June, 5pm)
-
-**80% of the final grade**
+Running the server: node server.js. Then, in firefox open http://127.0.0.1:8080/index.html
 
 
 ## Late policy
