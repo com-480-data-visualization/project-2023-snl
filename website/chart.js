@@ -10,7 +10,7 @@ const svg = d3.select("#Data").append("svg")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv('data/food-footprints.csv', createChart);
+d3.csv('./data/food-footprints.csv', createChart);
 
 function createChart(data) {
     var parsed = [];
