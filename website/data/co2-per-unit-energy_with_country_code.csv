@@ -1,4 +1,4 @@
-Entity,Code,Year,Annual CO₂ emissions per unit energy (kg per kilowatt-hour),Country_Code
+Entity,Code,Year,Emissions,Country_Code
 Afghanistan,AFG,1980,0.22543362,4
 Afghanistan,AFG,1981,0.22540629,4
 Afghanistan,AFG,1982,0.22405945,4
@@ -241,18 +241,18 @@ Antarctica,ATA,1991,0.016800633,0
 Antarctica,ATA,1992,0.01675473,0
 Antarctica,ATA,1993,0.016800633,0
 Antarctica,ATA,1994,0.016800633,0
-Antarctica,ATA,1995,0.0039201477,0
+Antarctica,ATA,1995,0.003920148,0
 Antarctica,ATA,1996,0.003909437,0
-Antarctica,ATA,1997,0.0039201477,0
-Antarctica,ATA,1998,0.0039201477,0
-Antarctica,ATA,1999,0.0039201477,0
-Antarctica,ATA,2000,0.0039411676,0
-Antarctica,ATA,2001,0.0038360697,0
-Antarctica,ATA,2002,0.0038360697,0
-Antarctica,ATA,2003,0.0038360697,0
+Antarctica,ATA,1997,0.003920148,0
+Antarctica,ATA,1998,0.003920148,0
+Antarctica,ATA,1999,0.003920148,0
+Antarctica,ATA,2000,0.003941168,0
+Antarctica,ATA,2001,0.00383607,0
+Antarctica,ATA,2002,0.00383607,0
+Antarctica,ATA,2003,0.00383607,0
 Antarctica,ATA,2004,0.00757119,0
-Antarctica,ATA,2005,0.0075256196,0
-Antarctica,ATA,2006,0.0075259823,0
+Antarctica,ATA,2005,0.00752562,0
+Antarctica,ATA,2006,0.007525982,0
 Antarctica,ATA,2007,0.011143459,0
 Antigua and Barbuda,ATG,1980,0.08399543,28
 Antigua and Barbuda,ATG,1981,0.07014478,28
