@@ -1,9 +1,9 @@
 Entity,Code,Year,ghg
 Bus,,2018,104.71
 Coach,,2018,27.79
-Flight Dom,,2018,254.92999999999998
-Train,,2018,27.4
+Flight Loc,,2018,254.92999999999998
 Flight Int,,2018,151.00
+Train,,2018,27.4
 Ferry (Car passenger),,2018,129.518
 Ferry (foot passenger),,2018,18.738
 Large Car Diesel,,2018,209.47
@@ -23,3 +23,5 @@ Large Motorcycle,,2018,135.01
 Medium Motorcycle,,2018,102.89
 Small Motorcycle,,2018,84.45
 Taxi,,2018,150.18
+Walk,,2018,0.0
+Cycle,,2018,20.0

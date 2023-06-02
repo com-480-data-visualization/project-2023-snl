@@ -35,7 +35,7 @@ function idCountryMap(geodata, populationdata) {
     });
 
     return idMap;
-  }
+}
 
 function makeMapTooltip(idMap) {
     let tooltip = d3.select("body").append("div").classed("map-tooltip", true);
@@ -60,7 +60,7 @@ function makeMapTooltip(idMap) {
     }
 
     return inner;
-  }
+}
 
 function mapColorScale(data) {
     let range = ["black"];
@@ -74,7 +74,7 @@ function mapColorScale(data) {
     }
 
     return inner;
-  }
+}
 
 function setMapColor(geodata, populationdata) {
     function inner(year, colorScalefn, option) {

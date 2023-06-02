@@ -4,11 +4,50 @@ let classes = new Map ([
     ["CarSize", "Transport"],
     ["CarKm", "Transport"],
     ["Car", "Transport"],
-    ["Flights", "Transport"],
+    ["Flight Loc", "Transport"],
+    ["Flight Int", "Transport"],
     ["Bus", "Transport"],
     ["Train", "Transport"],
     ["Cycle", "Transport"],
-    ["Walk", "Transport"]
+    ["Walk", "Transport"],
+    ["Beef (beef herd)", "Food"],
+    ["Dark Chocolate", "Food"],
+    ["Lamb & Mutton", "Food"],
+    ["Beef (dairy herd)", "Food"],
+    ["Coffee", "Food"],
+    ["Prawns (farmed)", "Food"],
+    ["Cheese", "Food"],
+    ["Fish (farmed)", "Food"],
+    ["Pig Meat", "Food"],
+    ["Poultry Meat", "Food"],
+    ["Eggs", "Food"],
+    ["Rice", "Food"],
+    ["Groundnuts", "Food"],
+    ["Cane Sugar", "Food"],
+    ["Tofu", "Food"],
+    ["Milk", "Food"],
+    ["Oatmeal", "Food"],
+    ["Tomatoes", "Food"],
+    ["Beet Sugar", "Food"],
+    ["Other Pulses", "Food"],
+    ["Wine", "Food"],
+    ["Maize", "Food"],
+    ["Wheat & Rye", "Food"],
+    ["Berries & Grapes", "Food"],
+    ["Cassava", "Food"],
+    ["Barley", "Food"],
+    ["Other Fruit", "Food"],
+    ["Peas", "Food"],
+    ["Soy milk", "Food"],
+    ["Bananas", "Food"],
+    ["Other Vegetables", "Food"],
+    ["Brassicas", "Food"],
+    ["Onions & Leeks", "Food"],
+    ["Potatoes", "Food"],
+    ["Nuts", "Food"],
+    ["Apples", "Food"],
+    ["Root Vegetables", "Food"],
+    ["Citrus Fruit", "Food"]
 ]);
 
 function getTransport(form, transport) {
@@ -33,21 +72,47 @@ function getTransport(form, transport) {
     delete tForm["CarSize"];
     delete tForm["CarKm"];
 
+    console.log("deleted: ");
     console.log(tForm);
+    console.log(transport);
 
-    tForm = Object.entries(tForm).map(([k,v]) => transport[k] * v);
-
-    console.log(tForm);
+    tForm = Object.entries(tForm).map(
+        ([k,v]) => {
+            return parseInt(transport[k]) * parseInt(v);
+        }
+    );
 
     tForm["Car"] = km * transport[qString];
 
     return tForm;
 }
 
-function cleanForBarChart(form, transport) {
-    let tr = getTransport(form, transport);
+function getFood(form, food) {
+    let tForm = Object.fromEntries(Object.entries(form).filter(([k,v]) => classes.get(k) == "Food"));
 
-    console.log(tr);
+    tForm = Object.entries(tForm).map(
+        ([k,v]) => {
+            return parseInt(food[k]) * parseInt(v) * 52;
+        }
+    );
+
+    return tForm;
+}
+
+function getEnergy(form, energy) {
+    let tForm = Object.fromEntries(Object.entries(form).filter(([k,v]) => classes.get(k) == "Energy"));
+
+
+
+    return tForm;
+}
+
+function cleanForBarChart(form, transport, food, energy) {
+    let tr = getTransport(form, transport);
+    let fd = getFood(form, food);
+
+    console.log(fd);
+
     throw new Error();
 }
 
@@ -71,13 +136,13 @@ function getData(form) {
                   "translate(" + margin.left + "," + margin.top + ")");
 
         console.log(formData);
-        formData = cleanForBarChart(formData, foodCsv, energyCsv, transportCsv);
+        formData = cleanForBarChart(formData, transportCsv, foodCsv, energyCsv);
 
         // List of subgroups = header of the csv files = soil condition here
         var classes = ["Food", "Transport", "Energy"];
 
         // List of groups = species here = value of the first column called group -> I show them on the X axis
-        var groups = d3.map(d3.entries(data), function(d){
+        var groups = d3.map(d3.entries(data), function(d) {
             console.log(d.key);
             return classes[d.key];
         }).keys();
