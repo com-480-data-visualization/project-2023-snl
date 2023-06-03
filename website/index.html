@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-	<meta charset=="UTF-8">
+	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
@@ -148,6 +148,9 @@
                     <svg id="map"></svg>
                 </div>
             </div>
+            <div id="line-chart">
+                <script src="line_chart.js"></script></div>
+            </div>
         </div>
         <div id="Calculator" class="tabcontent">
             <h1>Carbon Footprint</h1>
@@ -184,43 +187,37 @@
                         <option value="Small">Small</option>
                     </select>
                 </label>
-                <label>
+                <label>Km/year:
                     <input id="CarKm" name="CarKm" type="number" value="0">
-                    Km/year
                 </label>
                 <div/>
-                <label>Flight (Local):
-                    <input id="Flight Loc" name="Flight Loc" type="number" value="0">
-                    Km/year
-                </label>
-                <div/>
-                <label>Flight (International):
-                    <input id="Flight Int" name="Flight Int" type="number" value="0">
-                    Km/year
+                <label>Flights:
+                    <input id="Flights" name="Flights" type="number" value="0">
                 </label>
                 <div/>
                 <label>Bus:
                     <input id="Bus" name="Bus" type="number" value="0">
-                    Km/year
                 </label>
                 <div/>
                 <label>Train:
                     <input id="Train" name="Train" type="number" value="0">
-                    Km/year
                 </label>
                 <div/>
                 <label>Cycle:
                     <input id="Cycle" name="Cycle" type="number" value="0">
-                    Km/year
                 </label>
                 <div/>
                 <label>Walk:
                     <input id="Walk" name="Walk" type="number" value="0">
-                    Km/year
                 </label>
                 <h2>Food</h2>
                 <label>Beef (beef herd):
                     <input id="Beef (beef herd)" name="Beef (beef herd)" type="number" value="0">
+                    <text>g/week</text>
+                </label>
+                <div/>
+                <label>Beef:
+                    <input id="Beef" name="Beef" type="number" value="0">
                     <text>g/week</text>
                 </label>
                 <div/>
@@ -239,178 +236,34 @@
                     <text>g/week</text>
                 </label>
                 <div/>
-                <label>Coffee:
-                    <input id="Coffee" name="Coffee" type="number" value="0">
+                <label>Cofee:
+                    <input id="Cofee" name="Cofee" type="number" value="0">
                     <text>g/week</text>
                 </label>
                 <div/>
-                <label>Prawns (farmed):
-                    <input id="Prawns (farmed)" name="Prawns (farmed)" type="number" value="0">
+                <label>Prawns:
+                    <input id="Prawns" name="Prawns" type="number" value="0">
                     <text>g/week</text>
                 </label>
                 <div/>
                 <label>Cheese:
-                    <input id="Cheese" name="Cheese" type="number" value="0">
+                    <input id="Cheese" name="CHesse" type="number" value="0">
                     <text>g/week</text>
                 </label>
                 <div/>
-                <label>Fish (farmed):
-                    <input id="Fish (farmed)" name="Fish (farmed)" type="number" value="0">
+                <label>Fish:
+                    <input id="Fish" name="Fish" type="number" value="0">
                     <text>g/week</text>
                 </label>
                 <div/>
-                <label>Pig Meat:
-                    <input id="Pig Meat" name="Pig Meat" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Poultry Meat:
-                    <input id="Poultry Meat" name="Poultry Meat" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Eggs:
-                    <input id="Eggs" name="Eggs" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Rice:
-                    <input id="Rice" name="Rice" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Groundnuts:
-                    <input id="Groundnuts" name="Groundnuts" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Cane Sugar:
-                    <input id="Cane Sugar" name="Cane Sugar" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Tofu:
-                    <input id="Tofu" name="Tofu" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Milk:
-                    <input id="Milk" name="Milk" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Oatmeal:
-                    <input id="Oatmeal" name="Oatmeal" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Tomatoes:
-                    <input id="Tomatoes" name="Tomatoes" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Beet Sugar:
-                    <input id="Beet Sugar" name="Beet Sugar" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Other Pulses:
-                    <input id="Other Pulses" name="Other Pulses" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Wine:
-                    <input id="Wine" name="Wine" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Maize:
-                    <input id="Maize" name="Maize" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Wheat & Rye:
-                    <input id="Wheat & Rye" name="Wheat & Rye" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Berries & Grapes:
-                    <input id="Berries & Grapes" name="Berries & Grapes" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Cassava:
-                    <input id="Cassava" name="Cassava" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Barley:
-                    <input id="Barley" name="Barley" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Other Fruit:
-                    <input id="Other Fruit" name="Other Fruit" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Peas:
-                    <input id="Peas" name="Peas" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Soy milk:
-                    <input id="Soy milk" name="Soy milk" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Bananas:
-                    <input id="Bananas" name="Bananas" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Other Vegetables:
-                    <input id="Other Vegetables" name="Other Vegetables" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Brassicas:
-                    <input id="Brassicas" name="Brassicas" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Onions & Leeks:
-                    <input id="Onions & Leeks" name="Onions & Leeks" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Potatoes:
-                    <input id="Potatoes" name="Potatoes" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Nuts:
-                    <input id="Nuts" name="Nuts" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Apples:
-                    <input id="Apples" name="Apples" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Root Vegetables:
-                    <input id="Root Vegetables" name="Root Vegetables" type="number" value="0">
-                    <text>g/week</text>
-                </label>
-                <div/>
-                <label>Citrus Fruit:
-                    <input id="Citrus Fruit" name="Citrus Fruit" type="number" value="0">
+                <label>Pig Meet:
+                    <input id="Pig Meet" name="Pig Meet" type="number" value="0">
                     <text>g/week</text>
                 </label>
                 <div/>
                 <input type="submit" value="Submit">
             </form>
+
             <h2>JSon Input</h2>
             <div class="field">
 		            <label>Consumption csv</label>
