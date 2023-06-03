@@ -74,7 +74,7 @@ function createChart(data) {
         .style("font-weight", "bold")
         .style("text-decoration", "underline")
         .style("fill", doomOne.foreground)
-        .text("Kg of Co2 per Passenger Km");
+        .text("g of Co2 per Passenger Km");
 
     svg.append("text")
         .attr("x", (width / 2))
