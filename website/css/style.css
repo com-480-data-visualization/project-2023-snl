@@ -84,7 +84,6 @@
     stroke: gray;
   }
   
-<<<<<<< HEAD
   .bar-tooltip {
     opacity: 0;
     position: absolute;
@@ -111,7 +110,3 @@
 	p     { display: table-row;  }
 	label { display: table-cell; }
 	input { display: table-cell; }
-
-
-=======
->>>>>>> 19d14693b541e1b995225882191888eb751501c8

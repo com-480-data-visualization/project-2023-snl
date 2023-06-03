@@ -17,4 +17,4 @@ let doomOne = {
     color13: "#a9a1e1",
     color14: "#46d9ff",
     color15: "#dfdfdf",
-}
+};

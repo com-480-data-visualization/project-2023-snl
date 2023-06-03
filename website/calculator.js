@@ -92,7 +92,7 @@ function getFood(form, food) {
 
     tForm = Object.entries(tForm).map (
         ([k,v]) => {
-            return [k, parseInt(food[k]) * parseInt(v) * 52 / 1000];
+            return [k, Math.ceil(food[k] * parseInt(v) * 52.0 / 1000.0)];
         }
     );
 
@@ -104,13 +104,11 @@ function getEnergy(form, energy) {
     let tForm = Object.fromEntries(Object.entries(form).filter(([k,v]) => classes.get(k) == "Energy"));
     let country = tForm["Country"];
 
-    console.log(country);
-
     delete tForm["Country"];
 
     tForm = Object.entries(tForm).map (
         ([k,v]) => {
-            return [k, parseInt(energy[country]) * parseInt(v)];
+            return [k, energy[country] * parseInt(v)];
         }
     );
 
@@ -148,9 +146,6 @@ function drawPlot(formData) {
                   "translate(" + margin.left + "," + margin.top + ")");
 
         formData = cleanForBarChart(formData, transportCsv, foodCsv, energyCsv);
-        console.log(formData);
-
-        console.log(JSON.stringify(formData));
 
         for(var i = 0; i < formData.length; i++) {
             if(formData[i][1] > maxVal) {
@@ -177,7 +172,6 @@ function drawPlot(formData) {
             .enter()
             .append("rect")
             .style("fill", function(d) {
-                console.log(d[0] + " -> " + colors.get(classes.get(d[0])));
                 return colors.get(classes.get(d[0]));
             })
             .attr("x", x(0) )
@@ -222,10 +216,24 @@ function drawPlot(formData) {
             .attr("x", (width / 2))
             .attr("y", 0 - margin.top / 2)
             .attr("text-anchor", "middle")
-            .style("font-size", "25px")
-            .style("fill", doomOne.foreground)
+            .style("font-size", "35px")
+            .style("font-weight", "bold")
+            .style("text-decoration", "underline")
+            .style("fill", doomOne.color5)
             .text("Personalized Carbon Footprint");
 
+    });
+}
+
+function setTotal(form) {
+    readData(function (foodCsv, energyCsv, transportCsv) {
+        let tForm  = Object.fromEntries(cleanForBarChart(form, transportCsv, foodCsv, energyCsv));
+        let sum = Math.ceil(Object.values(tForm).reduce((a, b) => a + b, 0));
+
+        document.getElementById("Total").innerHTML = "<text style=\"color: " + doomOne.color10
+            + "; font-size: 30px;"
+            + "text-align: center;"
+            +"\">Total: " + sum + " kg of Co2 per year.</text>";
     });
 }
 
@@ -233,9 +241,44 @@ function getData(form) {
     var formD = new FormData(form);
     var formData = Object.fromEntries(formD);
 
-    drawPlot(planeMeat);
-    // drawPlot(formD);
-    // drawPlot(formD);
+    drawPlot(formData);
+    setTotal(formData);
+}
+
+function init() {
+    big();
+    document.getElementById("submit").click();
+}
+
+
+function big() {
+    let form = document.getElementById("form");
+
+    for (const [key, value] of Object.entries(bigD)) {
+        document.getElementById(key).value = value;
+    }
+
+    document.getElementById("submit").click();
+}
+
+function medium() {
+    let form = document.getElementById("form");
+
+    for (const [key, value] of Object.entries(mediumD)) {
+        document.getElementById(key).value = value;
+    }
+
+    document.getElementById("submit").click();
+}
+
+function small() {
+    let form = document.getElementById("form");
+
+    for (const [key, value] of Object.entries(smallD)) {
+        document.getElementById(key).value = value;
+    }
+
+    document.getElementById("submit").click();
 }
 
 document.getElementById("form").addEventListener("submit", function (e) {
@@ -243,4 +286,5 @@ document.getElementById("form").addEventListener("submit", function (e) {
     getData(e.target);
 });
 
-document.getElementById("submit").click();
+init();
+
