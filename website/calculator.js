@@ -128,7 +128,7 @@ function cleanForBarChart(form, transport, food, energy) {
 function drawPlot(formData) {
     readData(function (foodCsv, energyCsv, transportCsv) {
         // set the dimensions and margins of the graph
-        var margin = {top: 50, right: 100, bottom: 70, left: 200},
+        var margin = {top: 50, right: 100, bottom: 70, left: 250},
             width = 1200 - margin.left - margin.right,
             height = 1000 - margin.top - margin.bottom;
 
@@ -163,7 +163,7 @@ function drawPlot(formData) {
         var y = d3.scaleBand()
             .range([ 0, height ])
             .domain(sortedData.map(function(data) { return data[0]; }))
-            .padding(.1);
+            .padding(.2);
 
         var colors = new Map([["Transport", "#51afef"], ["Food", "#da8548"], ["Energy", "#98be65"]]);
 
@@ -186,7 +186,7 @@ function drawPlot(formData) {
             .call(d3.axisLeft(y))
             .selectAll("text")
             .style("fill", doomOne.foreground)
-            .style("font-size", "20px");
+            .style("font-size", "25px");
 
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")
@@ -196,7 +196,7 @@ function drawPlot(formData) {
             .attr("transform", "translate(-10,0)rotate(-45)")
             .style("text-anchor", "end")
             .style("fill", doomOne.foreground)
-            .style("font-size", "20px");
+            .style("font-size", "25px");
 
         svg.append("rect").attr("x", width - margin.right).attr("y", height / 2 - 18).attr("width", 25)
             .attr("height", 25).style("fill", "#da8548");

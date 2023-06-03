@@ -1,11 +1,11 @@
-d3.csv('./data/food-footprints.csv', createChartF);
+d3.csv('./data/carbon-footprint-travel-mode.csv', createChart);
 
-function createChartF(data) {
+function createChart(data) {
     var margin = {top: 50, right: 100, bottom: 100, left: 300},
         width = 1200 - margin.left - margin.right,
         height = 1000 - margin.top - margin.bottom;
 
-    const svg = d3.select("#Food").append("svg")
+    const svg = d3.select("#Transport").append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", (height + margin.top + margin.bottom))
           .append("g")
@@ -16,13 +16,17 @@ function createChartF(data) {
     var maxVal = 0;
 
     for(var i = 0; i < d3.keys(data).length; i++) {
-        let cost = d3.values(data)[i]["GHG emissions per kilogram (Poore & Nemecek, 2018)"];
+        let cost = d3.values(data)[i]["ghg"];
         parsed.push([d3.values(data)[i]["Entity"],cost]);
 
         if(cost > maxVal) {
             maxVal = cost;
         }
+
+        console.log(cost + " " + maxVal);
     }
+
+    maxVal = 260;
 
     parsed = parsed.sort(function(d0, d1) {return d0[1] - d1[1];}).reverse();
 
@@ -60,7 +64,7 @@ function createChartF(data) {
         .attr("y", function(d) { return y(d[0]); })
         .attr("width", function(d) { return x(d[1]); })
         .attr("height", y.bandwidth() )
-        .attr("fill", doomOne.color3);
+        .attr("fill", doomOne.color4);
 
     svg.append("text")
         .attr("x", (width / 2))
@@ -70,7 +74,7 @@ function createChartF(data) {
         .style("font-weight", "bold")
         .style("text-decoration", "underline")
         .style("fill", doomOne.foreground)
-        .text("Kg of Co2 per Food Kg");
+        .text("Kg of Co2 per Passenger Km");
 
     svg.append("text")
         .attr("x", (width / 2))
@@ -80,6 +84,6 @@ function createChartF(data) {
         .style("font-weight", "bold")
         .style("text-decoration", "underline")
         .style("fill", doomOne.color5)
-        .text("Food Carbon Footprint");
+        .text("Transport Carbon Footprint");
 
 }
