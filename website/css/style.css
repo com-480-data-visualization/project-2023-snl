@@ -75,28 +75,6 @@
     border-color: saddlebrown transparent transparent transparent;
   }
   
-  .pie-tooltip {
-    opacity: 0;
-    position: absolute;
-    pointer-events: none;
-    background-color: bisque;
-    border: 2px solid saddlebrown;
-    border-radius: 5px;
-    padding: 1px;
-    transition: 0.5s;
-  }
-  
-  .pie-tooltip:after {
-    content: ' ';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -6px;
-    border-width: 10px;
-    border-style: solid;
-    border-color: saddlebrown transparent transparent transparent;
-  }
-  
   .yearly-emission:hover {
     opacity: 0.75;
   }
@@ -106,6 +84,7 @@
     stroke: gray;
   }
   
+<<<<<<< HEAD
   .bar-tooltip {
     opacity: 0;
     position: absolute;
@@ -134,3 +113,5 @@
 	input { display: table-cell; }
 
 
+=======
+>>>>>>> 19d14693b541e1b995225882191888eb751501c8

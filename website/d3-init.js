@@ -31,6 +31,7 @@ d3.queue()
         mapColorfn(yearVal, mapScalefn, emissionType);
 
         // TODO: Init Chart
+        const chartDrawfn = drawLine(populationData);
 
         yearSelect
             .on("change", d => {
@@ -47,5 +48,6 @@ d3.queue()
                 d3.select(this).style("stroke", "black");
                 let countryData = d;
                 // TODO: Draw the Chart
+                chartDrawfn(countryData.properties.country, emissionType);
             });
     });
