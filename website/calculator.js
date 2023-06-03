@@ -130,8 +130,8 @@ function cleanForBarChart(form, transport, food, energy) {
 function drawPlot(formData) {
     readData(function (foodCsv, energyCsv, transportCsv) {
         // set the dimensions and margins of the graph
-        var margin = {top: 30, right: 100, bottom: 70, left: 150},
-            width = 1000 - margin.left - margin.right,
+        var margin = {top: 50, right: 100, bottom: 70, left: 150},
+            width = 1200 - margin.left - margin.right,
             height = 1000 - margin.top - margin.bottom;
 
         var maxVal = 0;
@@ -163,7 +163,7 @@ function drawPlot(formData) {
 
         var x = d3.scaleLinear()
             .domain([0, maxVal + 10])
-            .range([ 0, width - 200]);
+            .range([ 0, width]);
 
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")
@@ -195,19 +195,28 @@ function drawPlot(formData) {
             .attr("width", function(d) { return x(d[1]); })
             .attr("height", y.bandwidth() );
 
-        svg.append("rect").attr("x",600).attr("y",50).attr("width", 20)
-            .attr("height", 10).style("fill", "#da8548");
-        svg.append("rect").attr("x",600).attr("y",80).attr("width", 20)
-            .attr("height", 10).style("fill", "#51afef");
-        svg.append("rect").attr("x",600).attr("y",110).attr("width", 20)
-            .attr("height", 10).style("fill", "#98be65");
 
-        svg.append("text").attr("x", 630).attr("y", 60).text("Food")
-            .style("font-size", "15px").attr("alignment-baseline","middle");
-        svg.append("text").attr("x", 630).attr("y", 90).text("Transport")
-            .style("font-size", "15px").attr("alignment-baseline","middle");
-        svg.append("text").attr("x", 630).attr("y", 120).text("Energy")
-            .style("font-size", "15px").attr("alignment-baseline","middle");
+
+        svg.append("rect").attr("x", width - margin.right).attr("y", height / 2 - 18).attr("width", 25)
+            .attr("height", 25).style("fill", "#da8548");
+        svg.append("rect").attr("x", width - margin.right).attr("y", height / 2 + 12).attr("width", 25)
+            .attr("height", 25).style("fill", "#51afef");
+        svg.append("rect").attr("x", width - margin.right).attr("y", height / 2 + 42).attr("width", 25)
+            .attr("height", 25).style("fill", "#98be65");
+
+        svg.append("text").attr("x", width - margin.right + 30).attr("y", height / 2).text("Food")
+            .style("font-size", "25px").attr("alignment-baseline","middle");
+        svg.append("text").attr("x", width - margin.right + 30).attr("y", height / 2 + 30).text("Transport")
+            .style("font-size", "25px").attr("alignment-baseline","middle");
+        svg.append("text").attr("x", width - margin.right + 30).attr("y", height / 2 + 60).text("Energy")
+            .style("font-size", "25px").attr("alignment-baseline","middle");
+
+        svg.append("text")
+            .attr("x", (width / 2))
+            .attr("y", 0 - margin.top / 2)
+            .attr("text-anchor", "middle")
+            .style("font-size", "25px")
+            .text("Personalized Carbon Footprint");
 
     });
 }
@@ -227,5 +236,3 @@ document.getElementById("form").addEventListener("submit", function (e) {
 });
 
 document.getElementById("submit").click();
-
-
