@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-	<meta charset=="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://unpkg.com/topojson@3"></script>
-    <script src="https://unpkg.com/d3-scale-cluster@1.3.1/dist/d3-scale-cluster.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.0.0/d3.js"></script>
+	      <meta charset=="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://unpkg.com/topojson@3"></script>
+        <script src="https://unpkg.com/d3-scale-cluster@1.3.1/dist/d3-scale-cluster.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.0.0/d3.js"></script>
     </head>
     <style>
      form  { display: table;      }
@@ -42,6 +42,9 @@
          padding-right: 0px;
          padding-bottom: 5px;
          padding-left: 0px;
+         background-color: #282c34;
+         color: #bbc2cf;
+         class=axisDoom;
      }
      h1 {text-align: center;}
      h2 {text-align: center;}
@@ -58,6 +61,22 @@
          display: table-row;
      }
 
+     .axisDoom line{
+         stroke: #bbc2cf;
+     }
+
+     .axisDoom path{
+         stroke: #bbc2cf;
+     }
+
+     .axisDoom text{
+         fill: #bbc2cf;
+     }
+
+     div, text, html, body {
+         background-color: #282c34;
+         color: #bbc2cf;
+     }
     </style>
     <body>
         <button class="tablink" onclick="handleTab('Data')">Data Overview</button>
@@ -66,6 +85,7 @@
 
         <script type="text/javascript" src="utils.js"></script>
         <script type="text/javascript" src="defaults.js"></script>
+        <script type="text/javascript" src="theme.js"></script>
 
         <div id="Data" class="tabcontent">
             <script type="text/javascript" src="chart.js"></script>
@@ -122,18 +142,18 @@
             <p class="is-size-4">Click On A Country To View The Trend Over The Years</p>
             <script type="text/javascript" src="country.js"></script>
             <script src="d3-init.js"></script>
-            <div id="visualization">
-                <div class="visualization-side" id="side1">
+            <div id="visualization" style="width: 100%">
+                <div class="visualization-side" id="side1" style="width: 60%; float: left">
                     <svg id="map"></svg>
                 </div>
-		<div id="line-chart"> 
-			<script src="line_chart.js"></script>	
-		</div> 
+		            <div id="line-chart" style="margin-left: 50%">
+			              <script src="line_chart.js"></script>
+		            </div>
             </div>
         </div>
 
         <div id="Calculator" class="tabcontent" style="width: 100%">
-            <div style="width: 40%; float: left">
+            <div style="width: 30%; float: left">
                 <form id="form">
                     <p>
                         <label>Country:</label>
@@ -403,7 +423,7 @@
                     <input type="submit" value="Submit" id="submit">
                 </form>
             </div>
-            <div style="margin-left: 40%">
+            <div style="margin-left: 30%">
                 <div id="footprint" name="footprint"></div>
             </div>
         </div>

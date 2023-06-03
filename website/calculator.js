@@ -130,7 +130,7 @@ function cleanForBarChart(form, transport, food, energy) {
 function drawPlot(formData) {
     readData(function (foodCsv, energyCsv, transportCsv) {
         // set the dimensions and margins of the graph
-        var margin = {top: 50, right: 100, bottom: 70, left: 150},
+        var margin = {top: 50, right: 100, bottom: 70, left: 200},
             width = 1200 - margin.left - margin.right,
             height = 1000 - margin.top - margin.bottom;
 
@@ -165,20 +165,10 @@ function drawPlot(formData) {
             .domain([0, maxVal + 10])
             .range([ 0, width]);
 
-        svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x))
-            .selectAll("text")
-            .attr("transform", "translate(-10,0)rotate(-45)")
-            .style("text-anchor", "end");
-
         var y = d3.scaleBand()
             .range([ 0, height ])
             .domain(sortedData.map(function(data) { return data[0]; }))
             .padding(.1);
-
-        svg.append("g")
-            .call(d3.axisLeft(y));
 
         var colors = new Map([["Transport", "#51afef"], ["Food", "#da8548"], ["Energy", "#98be65"]]);
 
@@ -191,11 +181,28 @@ function drawPlot(formData) {
                 return colors.get(classes.get(d[0]));
             })
             .attr("x", x(0) )
-            .attr("y", function(d) { return y(d[0]); })
+            .attr("y", function(d) {
+                return y(d[0]);
+            })
             .attr("width", function(d) { return x(d[1]); })
             .attr("height", y.bandwidth() );
 
+        svg.append("g")
+            .attr("class", "axisDoom")
+            .call(d3.axisLeft(y))
+            .selectAll("text")
+            .style("fill", doomOne.foreground)
+            .style("font-size", "20px");
 
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .attr("class", "axisDoom")
+            .call(d3.axisBottom(x))
+            .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end")
+            .style("fill", doomOne.foreground)
+            .style("font-size", "20px");
 
         svg.append("rect").attr("x", width - margin.right).attr("y", height / 2 - 18).attr("width", 25)
             .attr("height", 25).style("fill", "#da8548");
@@ -205,17 +212,18 @@ function drawPlot(formData) {
             .attr("height", 25).style("fill", "#98be65");
 
         svg.append("text").attr("x", width - margin.right + 30).attr("y", height / 2).text("Food")
-            .style("font-size", "25px").attr("alignment-baseline","middle");
+            .style("font-size", "25px").attr("alignment-baseline","middle").style("fill", doomOne.foreground);
         svg.append("text").attr("x", width - margin.right + 30).attr("y", height / 2 + 30).text("Transport")
-            .style("font-size", "25px").attr("alignment-baseline","middle");
+            .style("font-size", "25px").attr("alignment-baseline","middle").style("fill", doomOne.foreground);
         svg.append("text").attr("x", width - margin.right + 30).attr("y", height / 2 + 60).text("Energy")
-            .style("font-size", "25px").attr("alignment-baseline","middle");
+            .style("font-size", "25px").attr("alignment-baseline","middle").style("fill", doomOne.foreground);
 
         svg.append("text")
             .attr("x", (width / 2))
             .attr("y", 0 - margin.top / 2)
             .attr("text-anchor", "middle")
             .style("font-size", "25px")
+            .style("fill", doomOne.foreground)
             .text("Personalized Carbon Footprint");
 
     });
