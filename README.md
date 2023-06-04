@@ -148,6 +148,9 @@ Please find a basic skeleton of out website in ./website/index.html
 ## Milestone 3 (4th June, 5pm)
 Running the server: node server.js. Then, in firefox open http://127.0.0.1:8080/index.html
 
+A video of the website with live visualizations can be found here: https://drive.google.com/file/d/1USOU8rOLBywW1Z5txKoHT-
+F1etVhC6Vd/view?usp=sharing
+
 
 ## Late policy
 
