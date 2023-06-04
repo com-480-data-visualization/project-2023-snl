@@ -19,7 +19,7 @@ function drawMap(geoData) {
         .attr("x", width / 2 - 175)
         .attr("y", height - 20)
         .style("font-size", "1em")
-	.style("background-color","white")
+	      .style("background-color","white")
         .classed("map-title", true)
         .text(`World-wide CO2 ${emissionType} during ${yearVal}`);
   }

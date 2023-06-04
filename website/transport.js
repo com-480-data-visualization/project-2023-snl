@@ -64,7 +64,7 @@ function createChart(data) {
         .attr("y", function(d) { return y(d[0]); })
         .attr("width", function(d) { return x(d[1]); })
         .attr("height", y.bandwidth() )
-        .attr("fill", doomOne.color4);
+        .attr("fill", "#51afef");
 
     svg.append("text")
         .attr("x", (width / 2))
