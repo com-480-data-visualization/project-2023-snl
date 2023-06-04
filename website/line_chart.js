@@ -57,11 +57,13 @@ function drawLine(data) {
         // Setting X,Y scale ranges
         const xScale = d3.scaleTime()
               .domain([
-                  d3.min(parsedData, (d) => d3.min(d.values, (v) => v.year)),
-                  d3.max(parsedData, (d) => d3.max(d.values, (v) => v.year))
+                  // d3.min(parsedData, (d) => d3.min(d.values, (v) => v.year)),
+                  // d3.max(parsedData, (d) => d3.max(d.values, (v) => v.year))
+                  1965,
+                  2021
               ])
               .range([0, width]);
-        
+        // console.log(xScale)
         const yScale = d3.scaleLinear()
               .domain([
                   d3.min(parsedData, (d) => d3.min(d.values, (v) => v.emissions)),
@@ -103,7 +105,7 @@ function drawLine(data) {
               .attr('d', function(d) {
                   return line(d.values);
               })
-              .attr('stroke-width', '2')
+              .attr('stroke-width', '5')
               .style('fill', 'none')
               .attr('stroke', doomOne.color3);
         
@@ -112,6 +114,7 @@ function drawLine(data) {
         const length = path.node().getTotalLength(); // Get line length
         
         console.log(length);
+        
         
         // Drawing animated line
         /* path.attr("stroke-dasharray", length + " " + length)
@@ -127,13 +130,13 @@ function drawLine(data) {
             .attr("d", function(d) {
                 return zeroArea(d.values);
             })
-            .style('fill', "#18FFF1")
+            .style('fill', "#c678dd")
             .transition()
             .duration(1500)
             .attr("d", function(d) {
                 return area(d.values);
             })
-            .style('fill', "#18FFF1");
+            .style('fill', "#c678dd");
         
         // Adding the x Axis
         svg.append("g")
@@ -144,13 +147,13 @@ function drawLine(data) {
             .attr("transform", "translate(-10,0)rotate(-45)")
             .style("text-anchor", "end")
             .style("fill", doomOne.foreground)
-            .style("font-size", "25px");
-        
+            .style("font-size", "25px")
+            // .label("Year");
         // Adding the y Axis
         svg.append("g")
             .attr("class", "axisDoom")
-            .call(d3.axisLeft(yScale));
-        
+            .call(d3.axisLeft(yScale))
+            // .label("Carbon emission in Kg per KWh");
         svg
             .select(".chart-title")
             .text(`${option} history for ${country}`);

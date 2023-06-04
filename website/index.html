@@ -118,8 +118,8 @@
     <body>
         <div class="container" style="width:100%;">
             <button class="tablink toplevel" onclick="handleTab('Overview')">Data Overview</button>
-            <button class="tablink toplevel" onclick="handleTab('Country')">Country Averages</button>
-            <button class="tablink toplevel" id="default" onclick="handleTab('Calculator')">Annual Calculator</button>
+            <button class="tablink toplevel" onclick="handleTab('Country')">Country-wise Emissions</button>
+            <button class="tablink toplevel" id="default"  onclick="handleTab('Calculator')">Personlised Calculator</button>
         </div>
 
         <script type="text/javascript" src="utils.js"></script>
@@ -133,11 +133,11 @@
             <div id="Transport" name="Transport" style="margin-left: 50%"></div>
         </div>
 
-        <div id="Country" class="tabcontent">
+        <div id="Country" class="tabcontent" style="text-align:center">
             <h2 class="subtitle" style="font-size: 35px;font-weight: bold; text-decoration: underline; color:#c678dd">
-                Explore Country-Wise Annual CO2 Emissions From 1980-2021
+                Explore Country-Wise Annual CO<sub>2</sub> Emissions From 1980-2021
             </h2>
-            <label>Select Year:</label>
+            <h2 style="font-size: 25px;font-weight: bold; color:#c678dd">Select Year:</h2>
 		        <select name="year" id="year-select">
                 <option value="" selected disabled hidden>Year</option>
   			        <option value="1980" >1980</option>
@@ -183,12 +183,12 @@
   			        <option value="2020">2020</option>
   			        <option value="2021">2021</option>
 		        </select>
-            <p class="is-size-4">Annual CO2 Emissions Per Unit Energy (kg per kWh)</p>
-            <p class="is-size-4">Click On A Country To View The Trend Over The Years</p>
+            <h2 class="is-size-4" style="font-size: 35px;font-weight: bold; color:#c678dd"> Annual CO<sub>2</sub> Emissions Per Unit Energy (kg per kWh)</h2>
+            <h2 class="is-size-4" style="font-size: 35px;font-weight: bold; color:#c678dd">Hover On A Country To View The Trend Over The Years</h2>
             <script type="text/javascript" src="country.js"></script>
             <script src="d3-init.js"></script>
             <div id="visualization" style="width: 100%">
-
+		            
 		<div class="visualization-side" id="side1" style="width: 60%; float: left">
                     <svg id="map"></svg>
 			<!-- <div id="legend"><script src="legend.js"></script></div> -->
@@ -412,7 +412,7 @@
                             <option value="Sudan">Sudan</option>
                             <option value="Suriname">Suriname</option>
                             <option value="Sweden">Sweden</option>
-                            <option selected="selected" value="Switzerland">Switzerland</option>
+                            <option value="Switzerland">Switzerland</option>
                             <option value="Syria">Syria</option>
                             <option value="Taiwan">Taiwan</option>
                             <option value="Tajikistan">Tajikistan</option>

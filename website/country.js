@@ -1,5 +1,5 @@
 function drawMap(geoData) {
-    let width = 800;
+    let width = 1200;
     let height = 650;
     let projection = d3.geoMercator()
         .scale(135)
@@ -15,13 +15,13 @@ function drawMap(geoData) {
         .append("path")
         .classed("country", true)
         .attr("d", path);
-    svg.append("text")
-        .attr("x", width / 2 - 175)
-        .attr("y", height - 20)
-        .style("font-size", "1em")
-	      .style("background-color","white")
-        .classed("map-title", true)
-        .text(`World-wide CO2 ${emissionType} during ${yearVal}`);
+    // svg.append("text")
+    //     .attr("x", width / 2 - 175)
+    //     .attr("y", height - 20)
+    //     .style("font-size", "1em")
+	// .style("background-color","white")
+    //     .classed("map-title", true)
+        // .text(`World-wide CO2 emissions during ${yearVal}`);
   }
 
 function idCountryMap(geodata, populationdata) {
