@@ -128,7 +128,7 @@ function cleanForBarChart(form, transport, food, energy) {
 function drawPlot(formData) {
     readData(function (foodCsv, energyCsv, transportCsv) {
         // set the dimensions and margins of the graph
-        var margin = {top: 50, right: 100, bottom: 70, left: 250},
+        var margin = {top: 50, right: 100, bottom: 150, left: 250},
             width = 1200 - margin.left - margin.right,
             height = 1000 - margin.top - margin.bottom;
 
@@ -220,6 +220,17 @@ function drawPlot(formData) {
             .style("text-decoration", "underline")
             .style("fill", doomOne.color5)
             .text("Personalized Carbon Footprint");
+
+        svg.append("text")
+            .attr("x", (width / 2))
+            .attr("y", height + margin.bottom - 50)
+            .attr("text-anchor", "middle")
+            .style("font-size", "25px")
+            .style("font-weight", "bold")
+            .style("text-decoration", "underline")
+            .style("fill", doomOne.foreground)
+            .text("Kg of Co2 per Food Kg");
+
 
     });
 }
