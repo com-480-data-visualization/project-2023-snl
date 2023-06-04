@@ -127,13 +127,13 @@ function drawLine(data) {
             .attr("d", function(d) {
                 return zeroArea(d.values);
             })
-            .style('fill', doomOne.color4)
+            .style('fill', "#18FFF1")
             .transition()
             .duration(1500)
             .attr("d", function(d) {
                 return area(d.values);
             })
-            .style('fill', doomOne.color4);
+            .style('fill', "#18FFF1");
         
         // Adding the x Axis
         svg.append("g")

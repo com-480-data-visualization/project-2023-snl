@@ -188,12 +188,14 @@
             <script type="text/javascript" src="country.js"></script>
             <script src="d3-init.js"></script>
             <div id="visualization" style="width: 100%">
-                <div class="visualization-side" id="side1" style="width: 50%; float: left">
-                    <div id="map"></div>
-                </div>
-		            <div id="line-chart" style="margin-left: 50%">
-			              <script src="line_chart.js"></script>
-		            </div>
+		            
+		<div class="visualization-side" id="side1" style="width: 60%; float: left">
+                    <svg id="map"></svg>
+			<!-- <div id="legend"><script src="legend.js"></script></div> -->
+		</div>
+		<div id="line-chart" style="margin-left: 50%">
+			<script src="line_chart.js"></script>
+		</div>
             </div>
         </div>
 

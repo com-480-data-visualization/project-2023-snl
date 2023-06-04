@@ -30,6 +30,16 @@ d3.queue()
         mapTooltipfn(emissionType);
         mapColorfn(yearVal, mapScalefn, emissionType);
 
+	// you can store the return of the funcion
+	/* var legendElement = legend({
+    		color: mapColorScale),
+    		title: "Emissions in kg per kWh",
+    		tickSize: 0,
+	});
+
+	// and then append to some element
+	document.getElementById("legend").append(legendElement); */
+
         // TODO: Init Chart
         const chartDrawfn = drawLine(populationData);
 
